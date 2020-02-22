@@ -5,12 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("./components/images/bg.png");
-  height: auto; /* You must set a specified height */
-  width: 100%;
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover;
 }
 
 code {

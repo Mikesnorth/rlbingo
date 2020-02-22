@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 class Table extends React.Component {
     constructor(props) {
         super(props)
@@ -24,6 +23,7 @@ class Table extends React.Component {
                         "Team Pinch Goal","Get a Lag Indicator","Double Tap Goal","Someone whiffs","Bump/Demo Goal", 
                         "You Miss Boost", "Map is Salty Shores (day or night)", "Team Double Commits", "Opponents Double Commits", "Turtle Goal", 
                         "Someone's using Poof Goal Explosion", "Get 3 Assists", "Get 3 Saves", "Have the Best Ping in Lobby", "Score 2 Goals in the first Minute",
+                        "Whiff a Flick"
                         ];
 
         var usedIndex = [];
@@ -44,62 +44,60 @@ class Table extends React.Component {
         this.forceUpdate();
     }
 
-
     handleClick = (e) => {
-        // if (e.target.style.background = "green") {
-        //     e.target.style.background = "red";
-        // }
-        // else {
-        //     e.target.style.background = "green";
-        //     console.log("else");
-        // }
-        e.target.style.background = "green";
-
+        console.log(e.target.style.background);
+        if (e.target.style.background === "red") {
+            e.target.style.background = "green";
+        }
+        else {
+            e.target.style.background = "red";
+        }
     }
 
     render () {
         let content;
         const display = this.disp;
-        console.log(display);
         if (display) {
             content = 
             <React.Fragment>
-                <table align="center" cellspacing="0" cellpadding="0" style={tableStyle}>
-                    <tr style={rowStyle}>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[0][0]}</th>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[0][1]}</th>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[0][2]}</th>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[0][3]}</th>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[0][4]}</th>
-                    </tr>
-                    <tr>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[1][0]}</th>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[1][1]}</th>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[1][2]}</th>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[1][3]}</th>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[1][4]}</th>
-                    </tr>
-                    <tr>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[2][0]}</th>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[2][1]}</th>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[2][2]}</th>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[2][3]}</th>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[2][4]}</th>
-                    </tr>
-                    <tr>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[3][0]}</th>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[3][1]}</th>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[3][2]}</th>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[3][3]}</th>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[3][4]}</th>
-                    </tr>
-                    <tr>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[4][0]}</th>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[4][1]}</th>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[4][2]}</th>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[4][3]}</th>
-                        <th bgcolor="Red" style={itemStyle} onClick={this.handleClick}>{this.state.rows[4][4]}</th>
-                    </tr>
+                <table align="center" cellSpacing="0" cellPadding="0" style={tableStyle}>
+                    <tbody>
+                        <tr style={rowStyle}>
+                            <th style={itemStyle} onClick={this.handleClick}>{this.state.rows[0][0]}</th>
+                            <th style={itemStyle} onClick={this.handleClick}>{this.state.rows[0][1]}</th>
+                            <th style={itemStyle} onClick={this.handleClick}>{this.state.rows[0][2]}</th>
+                            <th style={itemStyle} onClick={this.handleClick}>{this.state.rows[0][3]}</th>
+                            <th style={itemStyle} onClick={this.handleClick}>{this.state.rows[0][4]}</th>
+                        </tr>
+                        <tr>
+                            <th style={itemStyle} onClick={this.handleClick}>{this.state.rows[1][0]}</th>
+                            <th style={itemStyle} onClick={this.handleClick}>{this.state.rows[1][1]}</th>
+                            <th style={itemStyle} onClick={this.handleClick}>{this.state.rows[1][2]}</th>
+                            <th style={itemStyle} onClick={this.handleClick}>{this.state.rows[1][3]}</th>
+                            <th style={itemStyle} onClick={this.handleClick}>{this.state.rows[1][4]}</th>
+                        </tr>
+                        <tr>
+                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[2][0]}</th>
+                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[2][1]}</th>
+                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[2][2]}</th>
+                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[2][3]}</th>
+                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[2][4]}</th>
+                        </tr>
+                        <tr>
+                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[3][0]}</th>
+                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[3][1]}</th>
+                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[3][2]}</th>
+                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[3][3]}</th>
+                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[3][4]}</th>
+                        </tr>
+                        <tr>
+                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[4][0]}</th>
+                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[4][1]}</th>
+                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[4][2]}</th>
+                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[4][3]}</th>
+                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[4][4]}</th>
+                        </tr>
+                        </tbody>
                 </table>
             </React.Fragment>
         }
@@ -117,6 +115,7 @@ class Table extends React.Component {
 const tableStyle = {
     tableLayout: "fixed",
     width: "70%",
+    border: '5px solid white'
 }
 
 const rowStyle = {
@@ -126,14 +125,18 @@ const rowStyle = {
 
 const itemStyle = {
     overflow: "hidden",
-    background: 'red',
     padding: "3.5vw", 
-    opacity: "0.8"
+    opacity: "0.8",
+    border: '1px solid white',
+    background: "red"
 }
 
-const cellStyle = {
+const togleStyle = {
+    overflow: "hidden",
     padding: "3.5vw", 
-    background: "red"
+    opacity: "0.8",
+    border: '1px solid white',
+    background: "green"
 }
 
 
