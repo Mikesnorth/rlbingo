@@ -4,14 +4,14 @@ This is Rocket League Bingo. I created this after I watched [this video](https:/
 ## Installation
 
 ### Clone the Repo
-<img src="./readmePictures/img1.png alt="GitHub Clone>
-<img src="./readmePictures/img2.png alt="GitHub Copy>
+<img src="./readmePictures/img1.png" alt="GitHub Clone">
+<img src="./readmePictures/img2.png" alt="GitHub Copy">
 1. Open Git Bash (or Command Prompt).
 
 2. Cd to where you want the repo to go.
 
 3. Git Clone the link you got from Github.
-<img src="./readmePictures/clone.png alt="GitHub Clone>
+<img src="./readmePictures/clone.png" alt="GitHub Clone">
 
 ### Download Node.js
 Download Node.js at this <a href="https://nodejs.org/en/">link</a>.
