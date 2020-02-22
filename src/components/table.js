@@ -59,7 +59,6 @@ class Table extends React.Component {
         const display = this.disp;
         if (display) {
             content = 
-            <React.Fragment>
                 <table align="center" cellSpacing="0" cellPadding="0" style={tableStyle}>
                     <tbody>
                         <tr style={rowStyle}>
@@ -99,13 +98,20 @@ class Table extends React.Component {
                         </tr>
                         </tbody>
                 </table>
-            </React.Fragment>
         }
         
         return (
             <React.Fragment>
-                <button onClick={this.loadText} >Create Board</button>
-                {content}
+                <div style={leftDiv}>
+                    <button style={buttonStyle} onClick={this.loadText} >Create Board</button>
+                    <h1>Welcome to Rocket League Bingo!</h1>
+                    <h3>This is based off a video made by SunlessKhan, which you can check out</h3>
+                    <h2><a style={linkStyle} href="https://www.youtube.com/watch?v=-3aVf_LilUc" target="_blank">HERE</a></h2>
+                    <h3><a style={linkStyle} href="https://github.com/JakeCapra/rlbingo" target="_blank">GitHub</a></h3>
+                </div>
+                <div style={rightDiv}>
+                    {content}
+                </div>
             </React.Fragment>
         );
     }
@@ -114,8 +120,10 @@ class Table extends React.Component {
 
 const tableStyle = {
     tableLayout: "fixed",
-    width: "70%",
-    border: '5px solid white'
+    width: "80%",
+    border: '5px solid white',
+    margin: "0",
+    textAlign: "center"
 }
 
 const rowStyle = {
@@ -125,19 +133,40 @@ const rowStyle = {
 
 const itemStyle = {
     overflow: "hidden",
-    padding: "3.5vw", 
+    padding: "3.2vw", 
     opacity: "0.8",
     border: '1px solid white',
-    background: "red"
+    background: "red",
+    userSelect: "none",
+    cursor: "grab"
 }
 
-const togleStyle = {
-    overflow: "hidden",
-    padding: "3.5vw", 
+const buttonStyle = {
+    borderRadius: "10%",
+    margin: "1vw"
+}
+
+const leftDiv = {
+    float: "left",
+    width: "15%",
+    minHeight: "99%",
+    background: "purple",
     opacity: "0.8",
-    border: '1px solid white',
-    background: "green"
+    color: "white",
+    border: '3px solid white',
+    textAlign: "center",
+    position: "absolute",
 }
 
+const rightDiv = {
+    width: "80%",
+    float: "right",
+    textAlign: "center",
+}
+
+const linkStyle = {
+    textDecoration: "none",
+    color: "inherit"
+}
 
 export default Table;
