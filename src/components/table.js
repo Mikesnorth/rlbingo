@@ -1,6 +1,7 @@
 import React from 'react';
 import GitHubLogo from './images/githubLogo.png';
 import SteamLogo from './images/steamLogo.png';
+import youTubeLogo from './images/youTubeLogo.png';
 
 class Table extends React.Component {
     constructor(props) {
@@ -201,11 +202,11 @@ class Table extends React.Component {
                 <div style={leftDiv}>
                     <button style={buttonStyle} onClick={this.loadText} >Create Board</button>
                     <h1>Welcome to Rocket League Bingo!</h1>
-                    <h3>This is based off a video made by SunlessKhan, which you can check out</h3>
-                    <h2><a style={linkStyle} href="https://www.youtube.com/watch?v=-3aVf_LilUc" target="_blank">HERE</a></h2>
+                    <h3>This is based off a video made by <a style={linkStyle} href="https://www.youtube.com/channel/UCocHtA1ADT6kTObipYzJoww">SunlessKhan</a></h3>
+                    <h2><a style={linkStyle} href="https://www.youtube.com/watch?v=-3aVf_LilUc" target="_blank"><img class="logoLink" src={youTubeLogo}></img></a></h2>
                     <h3>
-                        <a style={linkStyle} href="https://github.com/JakeCapra/rlbingo" target="_blank"><img style={imgStyle} src={GitHubLogo}></img></a>
-                        <a style={linkStyle} href="https://steamcommunity.com/id/hip_dips/" target="_blank"><img style={imgStyle} src={SteamLogo}></img></a>
+                        <a style={linkStyle} href="https://github.com/JakeCapra/rlbingo" target="_blank"><img class="logoLink" src={GitHubLogo}></img></a>
+                        <a style={linkStyle} href="https://steamcommunity.com/id/hip_dips/" target="_blank"><img class="logoLink" src={SteamLogo}></img></a>
                         </h3>
                     <div>
                         <form onSubmit={this.noReload}>
@@ -276,11 +277,6 @@ const rightDiv = {
 const linkStyle = {
     textDecoration: "none",
     color: "inherit"
-}
-
-const imgStyle = {
-    width: '5vw',
-    height: 'auto'
 }
 
 export default Table;
