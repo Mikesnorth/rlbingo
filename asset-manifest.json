@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/rlbingo/static/css/main.073f58b5.chunk.css",
+    "main.js": "/rlbingo/static/js/main.1a5c3690.chunk.js",
+    "main.js.map": "/rlbingo/static/js/main.1a5c3690.chunk.js.map",
+    "runtime-main.js": "/rlbingo/static/js/runtime-main.19a45e87.js",
+    "runtime-main.js.map": "/rlbingo/static/js/runtime-main.19a45e87.js.map",
+    "static/js/2.16ba9aec.chunk.js": "/rlbingo/static/js/2.16ba9aec.chunk.js",
+    "static/js/2.16ba9aec.chunk.js.map": "/rlbingo/static/js/2.16ba9aec.chunk.js.map",
+    "index.html": "/rlbingo/index.html",
+    "precache-manifest.0f9b80b7a2ac09c849f2005dc4d9c7d2.js": "/rlbingo/precache-manifest.0f9b80b7a2ac09c849f2005dc4d9c7d2.js",
+    "service-worker.js": "/rlbingo/service-worker.js",
+    "static/css/main.073f58b5.chunk.css.map": "/rlbingo/static/css/main.073f58b5.chunk.css.map",
+    "static/js/2.16ba9aec.chunk.js.LICENSE.txt": "/rlbingo/static/js/2.16ba9aec.chunk.js.LICENSE.txt",
+    "static/media/bg.png": "/rlbingo/static/media/bg.d7df5243.png",
+    "static/media/dropshotbg.mp4": "/rlbingo/static/media/dropshotbg.019e214b.mp4",
+    "static/media/githubLogo.png": "/rlbingo/static/media/githubLogo.b3b4ee1c.png",
+    "static/media/redditLogo.png": "/rlbingo/static/media/redditLogo.ae9d4fa4.png",
+    "static/media/steamLogo.png": "/rlbingo/static/media/steamLogo.aabc1127.png",
+    "static/media/youTubeLogo.png": "/rlbingo/static/media/youTubeLogo.79b18605.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.19a45e87.js",
+    "static/js/2.16ba9aec.chunk.js",
+    "static/css/main.073f58b5.chunk.css",
+    "static/js/main.1a5c3690.chunk.js"
+  ]
+}
