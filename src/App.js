@@ -1,12 +1,15 @@
 import React from 'react';
 import Main from './components/main';
 import bg from './components/images/bg.png';
+import bgvid from './components/images/dropshotbg.mp4';
 
 
 function App() {
   return (
     <div>
-        <img src={bg} style={bgStyle} alt="car ball" />
+        <video autoPlay="true" loop="true" muted="true" id="bgVid">
+            <source src={bgvid} type="video/mp4" />
+        </video>
         <Main />
 
     </div>

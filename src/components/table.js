@@ -1,4 +1,6 @@
 import React from 'react';
+import GitHubLogo from './images/githubLogo.png';
+import SteamLogo from './images/steamLogo.png';
 
 class Table extends React.Component {
     constructor(props) {
@@ -48,6 +50,8 @@ class Table extends React.Component {
     }
 
     handleClick = (i, j, e) => {
+
+        
         if (e.target.style.background === "red") {
             e.target.style.background = "green";
             this.state.rows[i][j].marked = true;
@@ -59,11 +63,12 @@ class Table extends React.Component {
         this.checkWin();
     }
 
-    checkWin() {
-        //horizontal check
+    async checkWin() {
+        
         var pass=false;
         let temp = this.state.rows;
-
+        
+        //horizontal check
         for (var i=0; i<5; i++) {
             for (var j=0; j<5; j++) {
                 if (temp[i][j].marked) {
@@ -75,15 +80,15 @@ class Table extends React.Component {
                 }
             }
             if (pass) {
+                await sleep(10);
                 alert("you win");
                 return;
             }
         }
 
         //vertical check
-        pass = false;
-        for (var i=0; i<5; i++) {
-            for (var j=0; j<5; j++) {
+        for (i=0; i<5; i++) {
+            for (j=0; j<5; j++) {
                 if (temp[j][i].marked) {
                     pass=true;
                 }
@@ -93,14 +98,48 @@ class Table extends React.Component {
                 }
             }
             if (pass) {
+                await sleep(10);
                 alert("you win");
                 return;
             }
         }
 
-        //diagonal check
+        //diagonal check - left to right
+        for (i=0; i<5; i++) {
+            if (temp[i][i].marked) {
+                pass=true;
+            }
+            else {
+                pass=false;
+                break;
+            }
+        }
+        if (pass) {
+            await sleep(10);
+            alert("you win");
+            return;
+        }
+
+        //diagonal check - right to left
+        j = 4;
+        for (i=0; i<5; i++) {
+            if (temp[i][j].marked) {
+                pass=true;
+                j--;
+            }
+            else {
+                pass=false;
+                break;
+            }
+        }
+        if (pass) {
+            await sleep(10);
+            alert("you win");
+            return;
+        }
 
     } 
+
 
     onSubmit = (e) => {
         e.preventDefault();
@@ -119,7 +158,7 @@ class Table extends React.Component {
                 <table align="center" cellSpacing="0" cellPadding="0" style={tableStyle}>
                     <tbody>
                         <tr style={rowStyle}>
-                            <th style={itemStyle} onClick={(e) => this.handleClick("0", "0", e)}>{this.state.rows[0][0].title}</th>
+                            <th id="00" style={itemStyle} onClick={(e) => this.handleClick("0", "0", e)}>{this.state.rows[0][0].title}</th>
                             <th style={itemStyle} onClick={(e) => this.handleClick("0", "1", e)}>{this.state.rows[0][1].title}</th>
                             <th style={itemStyle} onClick={(e) => this.handleClick("0", "2", e)}>{this.state.rows[0][2].title}</th>
                             <th style={itemStyle} onClick={(e) => this.handleClick("0", "3", e)}>{this.state.rows[0][3].title}</th>
@@ -164,7 +203,10 @@ class Table extends React.Component {
                     <h1>Welcome to Rocket League Bingo!</h1>
                     <h3>This is based off a video made by SunlessKhan, which you can check out</h3>
                     <h2><a style={linkStyle} href="https://www.youtube.com/watch?v=-3aVf_LilUc" target="_blank">HERE</a></h2>
-                    <h3><a style={linkStyle} href="https://github.com/JakeCapra/rlbingo" target="_blank">GitHub</a></h3>
+                    <h3>
+                        <a style={linkStyle} href="https://github.com/JakeCapra/rlbingo" target="_blank"><img style={imgStyle} src={GitHubLogo}></img></a>
+                        <a style={linkStyle} href="https://steamcommunity.com/id/hip_dips/" target="_blank"><img style={imgStyle} src={SteamLogo}></img></a>
+                        </h3>
                     <div>
                         <form onSubmit={this.noReload}>
                         <input type="text" placeholder="Enter a bingo tile" />
@@ -179,6 +221,10 @@ class Table extends React.Component {
         );
     }
 }
+
+const sleep = (milliseconds) => {
+        return new Promise(resolve => setTimeout(resolve, milliseconds))
+      }
 
 
 const tableStyle = {
@@ -214,7 +260,7 @@ const leftDiv = {
     width: "15%",
     minHeight: "99%",
     background: "purple",
-    opacity: "0.8",
+    opacity: ".9",
     color: "white",
     border: '3px solid white',
     textAlign: "center",
@@ -230,6 +276,11 @@ const rightDiv = {
 const linkStyle = {
     textDecoration: "none",
     color: "inherit"
+}
+
+const imgStyle = {
+    width: '5vw',
+    height: 'auto'
 }
 
 export default Table;
