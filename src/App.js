@@ -16,7 +16,7 @@ function App() {
   );
 }
 
-
+// for image (if in use)
 const bgStyle = {
   minHeight: "100%",
   minWidth: "1024px",

@@ -200,9 +200,9 @@ class Table extends React.Component {
         return (
             <React.Fragment>
                 <div style={leftDiv}>
-                    <button style={buttonStyle} onClick={this.loadText} >Create Board</button>
+                    <button onClick={this.loadText} >Create Board</button>
                     <h1>Welcome to Rocket League Bingo!</h1>
-                    <h3>This is based off a video made by <a style={linkStyle} href="https://www.youtube.com/channel/UCocHtA1ADT6kTObipYzJoww">SunlessKhan</a></h3>
+                    <h3>This is based off a video made by <a href="https://www.youtube.com/channel/UCocHtA1ADT6kTObipYzJoww">SunlessKhan</a></h3>
                     <h2><a style={linkStyle} href="https://www.youtube.com/watch?v=-3aVf_LilUc" target="_blank"><img class="logoLink" src={youTubeLogo}></img></a></h2>
                     <h3>
                         <a style={linkStyle} href="https://github.com/JakeCapra/rlbingo" target="_blank"><img class="logoLink" src={GitHubLogo}></img></a>
@@ -212,7 +212,7 @@ class Table extends React.Component {
                         <form onSubmit={this.noReload}>
                         <input type="text" placeholder="Enter a bingo tile" />
                         </form>
-                        <button style={buttonStyle} onClick={this.onSubmit}>Enter</button>
+                        <button onClick={this.onSubmit}>Enter</button>
                     </div>
                 </div>
                 <div style={rightDiv}>
@@ -249,11 +249,6 @@ const itemStyle = {
     background: "red",
     userSelect: "none",
     cursor: "grab"
-}
-
-const buttonStyle = {
-    borderRadius: "10%",
-    margin: "1vw"
 }
 
 const leftDiv = {
