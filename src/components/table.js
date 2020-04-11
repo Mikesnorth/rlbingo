@@ -2,6 +2,7 @@ import React from 'react';
 import GitHubLogo from './images/githubLogo.png';
 import SteamLogo from './images/steamLogo.png';
 import youTubeLogo from './images/youTubeLogo.png';
+import redditLogo from './images/redditLogo.png';
 
 class Table extends React.Component {
     constructor(props) {
@@ -15,7 +16,8 @@ class Table extends React.Component {
                 [{title: 1, marked: false},{title: 2, marked: false}, {title: 3, marked: false},{title: 4, marked: false},{title: 5, marked: false}]
             ],
             disp: false,
-            addedTiles: []
+            addedTiles: [],
+            sleepAmt: 200,
         }
     }
 
@@ -68,6 +70,7 @@ class Table extends React.Component {
         
         var pass=false;
         let temp = this.state.rows;
+        let slpAmt = this.state.sleepAmt;
         
         //horizontal check
         for (var i=0; i<5; i++) {
@@ -81,7 +84,7 @@ class Table extends React.Component {
                 }
             }
             if (pass) {
-                await sleep(10);
+                await sleep(slpAmt);
                 alert("you win");
                 return;
             }
@@ -99,7 +102,7 @@ class Table extends React.Component {
                 }
             }
             if (pass) {
-                await sleep(10);
+                await sleep(slpAmt);
                 alert("you win");
                 return;
             }
@@ -116,7 +119,7 @@ class Table extends React.Component {
             }
         }
         if (pass) {
-            await sleep(10);
+            await sleep(slpAmt);
             alert("you win");
             return;
         }
@@ -134,12 +137,24 @@ class Table extends React.Component {
             }
         }
         if (pass) {
-            await sleep(10);
+            await sleep(slpAmt);
             alert("you win");
             return;
         }
 
     } 
+
+    reset = () => {
+        for (var i=0; i<5; i++) {
+            for (var j=0; j<5; j++) {
+                this.state.rows[i][j].marked = false;
+                var id = i.toString() + j.toString();
+                var tmp = document.getElementById(id);
+                tmp.style.background = "red";
+            }
+        }
+        this.forceUpdate();
+    }
 
 
     onSubmit = (e) => {
@@ -153,6 +168,7 @@ class Table extends React.Component {
 
     render () {
         let content;
+        let resetBtn;
         const display = this.disp;
         if (display) {
             content = 
@@ -160,41 +176,42 @@ class Table extends React.Component {
                     <tbody>
                         <tr style={rowStyle}>
                             <th id="00" style={itemStyle} onClick={(e) => this.handleClick("0", "0", e)}>{this.state.rows[0][0].title}</th>
-                            <th style={itemStyle} onClick={(e) => this.handleClick("0", "1", e)}>{this.state.rows[0][1].title}</th>
-                            <th style={itemStyle} onClick={(e) => this.handleClick("0", "2", e)}>{this.state.rows[0][2].title}</th>
-                            <th style={itemStyle} onClick={(e) => this.handleClick("0", "3", e)}>{this.state.rows[0][3].title}</th>
-                            <th style={itemStyle} onClick={(e) => this.handleClick("0", "4", e)}>{this.state.rows[0][4].title}</th>
+                            <th id="01" style={itemStyle} onClick={(e) => this.handleClick("0", "1", e)}>{this.state.rows[0][1].title}</th>
+                            <th id="02" style={itemStyle} onClick={(e) => this.handleClick("0", "2", e)}>{this.state.rows[0][2].title}</th>
+                            <th id="03" style={itemStyle} onClick={(e) => this.handleClick("0", "3", e)}>{this.state.rows[0][3].title}</th>
+                            <th id="04" style={itemStyle} onClick={(e) => this.handleClick("0", "4", e)}>{this.state.rows[0][4].title}</th>
                         </tr>
                         <tr>
-                            <th style={itemStyle} onClick={(e) => this.handleClick("1", "0", e)}>{this.state.rows[1][0].title}</th>
-                            <th style={itemStyle} onClick={(e) => this.handleClick("1", "1", e)}>{this.state.rows[1][1].title}</th>
-                            <th style={itemStyle} onClick={(e) => this.handleClick("1", "2", e)}>{this.state.rows[1][2].title}</th>
-                            <th style={itemStyle} onClick={(e) => this.handleClick("1", "3", e)}>{this.state.rows[1][3].title}</th>
-                            <th style={itemStyle} onClick={(e) => this.handleClick("1", "4", e)}>{this.state.rows[1][4].title}</th>
+                            <th id="10" style={itemStyle} onClick={(e) => this.handleClick("1", "0", e)}>{this.state.rows[1][0].title}</th>
+                            <th id="11" style={itemStyle} onClick={(e) => this.handleClick("1", "1", e)}>{this.state.rows[1][1].title}</th>
+                            <th id="12" style={itemStyle} onClick={(e) => this.handleClick("1", "2", e)}>{this.state.rows[1][2].title}</th>
+                            <th id="13" style={itemStyle} onClick={(e) => this.handleClick("1", "3", e)}>{this.state.rows[1][3].title}</th>
+                            <th id="14" style={itemStyle} onClick={(e) => this.handleClick("1", "4", e)}>{this.state.rows[1][4].title}</th>
                         </tr>
                         <tr>
-                            <th  style={itemStyle} onClick={(e) => this.handleClick("2", "0", e)}>{this.state.rows[2][0].title}</th>
-                            <th  style={itemStyle} onClick={(e) => this.handleClick("2", "1", e)}>{this.state.rows[2][1].title}</th>
-                            <th  style={itemStyle} onClick={(e) => this.handleClick("2", "2", e)}>{this.state.rows[2][2].title}</th>
-                            <th  style={itemStyle} onClick={(e) => this.handleClick("2", "3", e)}>{this.state.rows[2][3].title}</th>
-                            <th  style={itemStyle} onClick={(e) => this.handleClick("2", "4", e)}>{this.state.rows[2][4].title}</th>
+                            <th id="20" style={itemStyle} onClick={(e) => this.handleClick("2", "0", e)}>{this.state.rows[2][0].title}</th>
+                            <th id="21" style={itemStyle} onClick={(e) => this.handleClick("2", "1", e)}>{this.state.rows[2][1].title}</th>
+                            <th id="22" style={itemStyle} onClick={(e) => this.handleClick("2", "2", e)}>{this.state.rows[2][2].title}</th>
+                            <th id="23" style={itemStyle} onClick={(e) => this.handleClick("2", "3", e)}>{this.state.rows[2][3].title}</th>
+                            <th id="24" style={itemStyle} onClick={(e) => this.handleClick("2", "4", e)}>{this.state.rows[2][4].title}</th>
                         </tr>
                         <tr>
-                            <th  style={itemStyle} onClick={(e) => this.handleClick("3", "0", e)}>{this.state.rows[3][0].title}</th>
-                            <th  style={itemStyle} onClick={(e) => this.handleClick("3", "1", e)}>{this.state.rows[3][1].title}</th>
-                            <th  style={itemStyle} onClick={(e) => this.handleClick("3", "2", e)}>{this.state.rows[3][2].title}</th>
-                            <th  style={itemStyle} onClick={(e) => this.handleClick("3", "3", e)}>{this.state.rows[3][3].title}</th>
-                            <th  style={itemStyle} onClick={(e) => this.handleClick("3", "4", e)}>{this.state.rows[3][4].title}</th>
+                            <th id="30" style={itemStyle} onClick={(e) => this.handleClick("3", "0", e)}>{this.state.rows[3][0].title}</th>
+                            <th id="31" style={itemStyle} onClick={(e) => this.handleClick("3", "1", e)}>{this.state.rows[3][1].title}</th>
+                            <th id="32" style={itemStyle} onClick={(e) => this.handleClick("3", "2", e)}>{this.state.rows[3][2].title}</th>
+                            <th id="33" style={itemStyle} onClick={(e) => this.handleClick("3", "3", e)}>{this.state.rows[3][3].title}</th>
+                            <th id="34" style={itemStyle} onClick={(e) => this.handleClick("3", "4", e)}>{this.state.rows[3][4].title}</th>
                         </tr>
                         <tr>
-                            <th  style={itemStyle} onClick={(e) => this.handleClick("4", "0", e)}>{this.state.rows[4][0].title}</th>
-                            <th  style={itemStyle} onClick={(e) => this.handleClick("4", "1", e)}>{this.state.rows[4][1].title}</th>
-                            <th  style={itemStyle} onClick={(e) => this.handleClick("4", "2", e)}>{this.state.rows[4][2].title}</th>
-                            <th  style={itemStyle} onClick={(e) => this.handleClick("4", "3", e)}>{this.state.rows[4][3].title}</th>
-                            <th  style={itemStyle} onClick={(e) => this.handleClick("4", "4", e)}>{this.state.rows[4][4].title}</th>
+                            <th id="40" style={itemStyle} onClick={(e) => this.handleClick("4", "0", e)}>{this.state.rows[4][0].title}</th>
+                            <th id="41" style={itemStyle} onClick={(e) => this.handleClick("4", "1", e)}>{this.state.rows[4][1].title}</th>
+                            <th id="42" style={itemStyle} onClick={(e) => this.handleClick("4", "2", e)}>{this.state.rows[4][2].title}</th>
+                            <th id="43" style={itemStyle} onClick={(e) => this.handleClick("4", "3", e)}>{this.state.rows[4][3].title}</th>
+                            <th id="44" style={itemStyle} onClick={(e) => this.handleClick("4", "4", e)}>{this.state.rows[4][4].title}</th>
                         </tr>
                         </tbody>
                 </table>
+                resetBtn = <button onClick={this.reset}>Reset</button>;
         }
         
         return (
@@ -203,16 +220,20 @@ class Table extends React.Component {
                     <button onClick={this.loadText} >Create Board</button>
                     <h1>Welcome to Rocket League Bingo!</h1>
                     <h3>This is based off a video made by <a href="https://www.youtube.com/channel/UCocHtA1ADT6kTObipYzJoww">SunlessKhan</a></h3>
-                    <h2><a style={linkStyle} href="https://www.youtube.com/watch?v=-3aVf_LilUc" target="_blank"><img class="logoLink" src={youTubeLogo}></img></a></h2>
+                    <h3>
+                        <a style={linkStyle} href="https://www.youtube.com/watch?v=-3aVf_LilUc" target="_blank"><img class="logoLink" src={youTubeLogo}></img></a>
+                        <a style={linkStyle} href="https://www.reddit.com/r/RocketLeague/" target="_blank"><img class="logoLink" src={redditLogo}></img></a>
+                        </h3>
                     <h3>
                         <a style={linkStyle} href="https://github.com/JakeCapra/rlbingo" target="_blank"><img class="logoLink" src={GitHubLogo}></img></a>
                         <a style={linkStyle} href="https://steamcommunity.com/id/hip_dips/" target="_blank"><img class="logoLink" src={SteamLogo}></img></a>
-                        </h3>
+                    </h3>
                     <div>
                         <form onSubmit={this.noReload}>
                         <input type="text" placeholder="Enter a bingo tile" />
                         </form>
                         <button onClick={this.onSubmit}>Enter</button>
+                        {resetBtn}
                     </div>
                 </div>
                 <div style={rightDiv}>
@@ -233,6 +254,7 @@ const tableStyle = {
     width: "80%",
     border: '5px solid white',
     margin: "0",
+    paddingTop: ".5vw",
     textAlign: "center"
 }
 
@@ -244,7 +266,7 @@ const rowStyle = {
 const itemStyle = {
     overflow: "hidden",
     padding: "3.2vw", 
-    opacity: "0.8",
+    opacity: "0.75",
     border: '1px solid white',
     background: "red",
     userSelect: "none",

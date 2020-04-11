@@ -17,8 +17,8 @@ code {
   position: fixed;
   right: 0;
   bottom: 0;
-  width: 100%;
-  height: auto;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .logoLink {
@@ -55,4 +55,19 @@ button:hover {
   transform: scale(1.1);
   color: black;
   border: 2px solid black;
+}
+
+th {
+  transition: all .25s ease-in-out;
+  overflow: hidden;
+    padding: 3.2vw; 
+    opacity: 0.75;
+    border: 1px solid white;
+    background: red;
+    user-select: none;
+    cursor: "grab";
+}
+th:hover {
+  transform: scale(1.07);
+  color: white;
 }
