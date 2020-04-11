@@ -218,7 +218,7 @@ class Table extends React.Component {
             <React.Fragment>
                 <div style={leftDiv}>
                     <button onClick={this.loadText} >Create Board</button>
-                    <h1>Welcome to Rocket League Bingo!</h1>
+                    <h1>This is Rocket League Bingo!</h1>
                     <h3>This is based off a video made by <a href="https://www.youtube.com/channel/UCocHtA1ADT6kTObipYzJoww">SunlessKhan</a></h3>
                     <h3>
                         <a style={linkStyle} href="https://www.youtube.com/watch?v=-3aVf_LilUc" target="_blank"><img class="logoLink" src={youTubeLogo}></img></a>

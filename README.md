@@ -2,6 +2,9 @@
 <img src="./readmePictures/home.png" alt="Home page">
 This is Rocket League Bingo. I created this after I watched <a href=https://www.youtube.com/watch?v=-3aVf_LilUc">this video</a> by SunlessKhan
 
+# View the Site
+You can view and use the site [here](https://jakecapra.github.io/rlbingo/)
+
 ## Installation
 
 ### Clone the Repo
