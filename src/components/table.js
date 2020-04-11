@@ -5,13 +5,14 @@ class Table extends React.Component {
         super(props)
         this.state = {
             rows: [
-                [1, 2, 3, 4, 5],
-                [1, 2, 3, 4, 5],
-                [1, 2, 3, 4, 5],
-                [1, 2, 3, 4, 5],
-                [1, 2, 3, 4, 5]
+                [{title: 1, marked: false},{title: 2, marked: false}, {title: 3, marked: false},{title: 4, marked: false},{title: 5, marked: false}],
+                [{title: 1, marked: false},{title: 2, marked: false}, {title: 3, marked: false},{title: 4, marked: false},{title: 5, marked: false}],
+                [{title: 1, marked: false},{title: 2, marked: false}, {title: 3, marked: false},{title: 4, marked: false},{title: 5, marked: false}],
+                [{title: 1, marked: false},{title: 2, marked: false}, {title: 3, marked: false},{title: 4, marked: false},{title: 5, marked: false}],
+                [{title: 1, marked: false},{title: 2, marked: false}, {title: 3, marked: false},{title: 4, marked: false},{title: 5, marked: false}]
             ],
             disp: false,
+            addedTiles: []
         }
     }
 
@@ -36,22 +37,78 @@ class Table extends React.Component {
 
                 } while (usedIndex.includes(index));
                 usedIndex.push(index);
-                this.state.rows[i][j] = tileText[index];
+                this.state.rows[i][j].title = tileText[index];
+                this.state.rows[i][j].marked = false;
+                this.forceUpdate();
             }
         }
-        this.state.rows[2][2] = "Free";
+        this.state.rows[2][2].title = "Free";
         this.disp = true;
         this.forceUpdate();
     }
 
-    handleClick = (e) => {
-        console.log(e.target.style.background);
+    handleClick = (i, j, e) => {
         if (e.target.style.background === "red") {
             e.target.style.background = "green";
+            this.state.rows[i][j].marked = true;
         }
         else {
             e.target.style.background = "red";
+            this.state.rows[i][j].marked = false;
         }
+        this.checkWin();
+    }
+
+    checkWin() {
+        //horizontal check
+        var pass=false;
+        let temp = this.state.rows;
+
+        for (var i=0; i<5; i++) {
+            for (var j=0; j<5; j++) {
+                if (temp[i][j].marked) {
+                    pass=true;
+                }
+                else {
+                    pass=false;
+                    break;
+                }
+            }
+            if (pass) {
+                alert("you win");
+                return;
+            }
+        }
+
+        //vertical check
+        pass = false;
+        for (var i=0; i<5; i++) {
+            for (var j=0; j<5; j++) {
+                if (temp[j][i].marked) {
+                    pass=true;
+                }
+                else {
+                    pass=false;
+                    break;
+                }
+            }
+            if (pass) {
+                alert("you win");
+                return;
+            }
+        }
+
+        //diagonal check
+
+    } 
+
+    onSubmit = (e) => {
+        e.preventDefault();
+        var title = this.title;
+        console.log(title);
+    }
+    noReload = (e) => {
+        e.preventDefault();
     }
 
     render () {
@@ -62,39 +119,39 @@ class Table extends React.Component {
                 <table align="center" cellSpacing="0" cellPadding="0" style={tableStyle}>
                     <tbody>
                         <tr style={rowStyle}>
-                            <th style={itemStyle} onClick={this.handleClick}>{this.state.rows[0][0]}</th>
-                            <th style={itemStyle} onClick={this.handleClick}>{this.state.rows[0][1]}</th>
-                            <th style={itemStyle} onClick={this.handleClick}>{this.state.rows[0][2]}</th>
-                            <th style={itemStyle} onClick={this.handleClick}>{this.state.rows[0][3]}</th>
-                            <th style={itemStyle} onClick={this.handleClick}>{this.state.rows[0][4]}</th>
+                            <th style={itemStyle} onClick={(e) => this.handleClick("0", "0", e)}>{this.state.rows[0][0].title}</th>
+                            <th style={itemStyle} onClick={(e) => this.handleClick("0", "1", e)}>{this.state.rows[0][1].title}</th>
+                            <th style={itemStyle} onClick={(e) => this.handleClick("0", "2", e)}>{this.state.rows[0][2].title}</th>
+                            <th style={itemStyle} onClick={(e) => this.handleClick("0", "3", e)}>{this.state.rows[0][3].title}</th>
+                            <th style={itemStyle} onClick={(e) => this.handleClick("0", "4", e)}>{this.state.rows[0][4].title}</th>
                         </tr>
                         <tr>
-                            <th style={itemStyle} onClick={this.handleClick}>{this.state.rows[1][0]}</th>
-                            <th style={itemStyle} onClick={this.handleClick}>{this.state.rows[1][1]}</th>
-                            <th style={itemStyle} onClick={this.handleClick}>{this.state.rows[1][2]}</th>
-                            <th style={itemStyle} onClick={this.handleClick}>{this.state.rows[1][3]}</th>
-                            <th style={itemStyle} onClick={this.handleClick}>{this.state.rows[1][4]}</th>
+                            <th style={itemStyle} onClick={(e) => this.handleClick("1", "0", e)}>{this.state.rows[1][0].title}</th>
+                            <th style={itemStyle} onClick={(e) => this.handleClick("1", "1", e)}>{this.state.rows[1][1].title}</th>
+                            <th style={itemStyle} onClick={(e) => this.handleClick("1", "2", e)}>{this.state.rows[1][2].title}</th>
+                            <th style={itemStyle} onClick={(e) => this.handleClick("1", "3", e)}>{this.state.rows[1][3].title}</th>
+                            <th style={itemStyle} onClick={(e) => this.handleClick("1", "4", e)}>{this.state.rows[1][4].title}</th>
                         </tr>
                         <tr>
-                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[2][0]}</th>
-                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[2][1]}</th>
-                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[2][2]}</th>
-                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[2][3]}</th>
-                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[2][4]}</th>
+                            <th  style={itemStyle} onClick={(e) => this.handleClick("2", "0", e)}>{this.state.rows[2][0].title}</th>
+                            <th  style={itemStyle} onClick={(e) => this.handleClick("2", "1", e)}>{this.state.rows[2][1].title}</th>
+                            <th  style={itemStyle} onClick={(e) => this.handleClick("2", "2", e)}>{this.state.rows[2][2].title}</th>
+                            <th  style={itemStyle} onClick={(e) => this.handleClick("2", "3", e)}>{this.state.rows[2][3].title}</th>
+                            <th  style={itemStyle} onClick={(e) => this.handleClick("2", "4", e)}>{this.state.rows[2][4].title}</th>
                         </tr>
                         <tr>
-                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[3][0]}</th>
-                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[3][1]}</th>
-                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[3][2]}</th>
-                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[3][3]}</th>
-                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[3][4]}</th>
+                            <th  style={itemStyle} onClick={(e) => this.handleClick("3", "0", e)}>{this.state.rows[3][0].title}</th>
+                            <th  style={itemStyle} onClick={(e) => this.handleClick("3", "1", e)}>{this.state.rows[3][1].title}</th>
+                            <th  style={itemStyle} onClick={(e) => this.handleClick("3", "2", e)}>{this.state.rows[3][2].title}</th>
+                            <th  style={itemStyle} onClick={(e) => this.handleClick("3", "3", e)}>{this.state.rows[3][3].title}</th>
+                            <th  style={itemStyle} onClick={(e) => this.handleClick("3", "4", e)}>{this.state.rows[3][4].title}</th>
                         </tr>
                         <tr>
-                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[4][0]}</th>
-                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[4][1]}</th>
-                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[4][2]}</th>
-                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[4][3]}</th>
-                            <th  style={itemStyle} onClick={this.handleClick}>{this.state.rows[4][4]}</th>
+                            <th  style={itemStyle} onClick={(e) => this.handleClick("4", "0", e)}>{this.state.rows[4][0].title}</th>
+                            <th  style={itemStyle} onClick={(e) => this.handleClick("4", "1", e)}>{this.state.rows[4][1].title}</th>
+                            <th  style={itemStyle} onClick={(e) => this.handleClick("4", "2", e)}>{this.state.rows[4][2].title}</th>
+                            <th  style={itemStyle} onClick={(e) => this.handleClick("4", "3", e)}>{this.state.rows[4][3].title}</th>
+                            <th  style={itemStyle} onClick={(e) => this.handleClick("4", "4", e)}>{this.state.rows[4][4].title}</th>
                         </tr>
                         </tbody>
                 </table>
@@ -108,6 +165,12 @@ class Table extends React.Component {
                     <h3>This is based off a video made by SunlessKhan, which you can check out</h3>
                     <h2><a style={linkStyle} href="https://www.youtube.com/watch?v=-3aVf_LilUc" target="_blank">HERE</a></h2>
                     <h3><a style={linkStyle} href="https://github.com/JakeCapra/rlbingo" target="_blank">GitHub</a></h3>
+                    <div>
+                        <form onSubmit={this.noReload}>
+                        <input type="text" placeholder="Enter a bingo tile" />
+                        </form>
+                        <button style={buttonStyle} onClick={this.onSubmit}>Enter</button>
+                    </div>
                 </div>
                 <div style={rightDiv}>
                     {content}
