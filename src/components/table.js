@@ -17,6 +17,7 @@ class Table extends React.Component {
             ],
             disp: false,
             addedTiles: [],
+            useAdded: false,
             sleepAmt: 200,
         }
     }
@@ -156,20 +157,23 @@ class Table extends React.Component {
         this.forceUpdate();
     }
 
-
     onSubmit = (e) => {
         e.preventDefault();
-        var title = this.title;
-        console.log(title);
+        var input = document.getElementById("inputBox").value;
+        this.state.addedTiles.push(input);
+        this.useAdded = true;
+        this.forceUpdate();
     }
     noReload = (e) => {
         e.preventDefault();
     }
 
     render () {
-        let content;
+        let content, added;
         let resetBtn;
+        //let userVars = this.addedTiles;
         const display = this.disp;
+        const dispAdded = this.useAdded;
         if (display) {
             content = 
                 <table align="center" cellSpacing="0" cellPadding="0" style={tableStyle}>
@@ -213,7 +217,16 @@ class Table extends React.Component {
                 </table>
                 resetBtn = <button onClick={this.reset}>Reset</button>;
         }
-        
+        if (dispAdded) {
+            let holder;
+            for (var i=0; i<this.state.addedTiles.length; i++) {
+                console.log(this.state.addedTiles[i]);
+                var x = this.state.addedTiles[i]
+                holder += (<p>{x}</p>);
+            }
+            added = holder;
+        }
+
         return (
             <React.Fragment>
                 <div style={leftDiv}>
@@ -221,19 +234,20 @@ class Table extends React.Component {
                     <h1>This is Rocket League Bingo!</h1>
                     <h3>This is based off a video made by <a href="https://www.youtube.com/channel/UCocHtA1ADT6kTObipYzJoww">SunlessKhan</a></h3>
                     <h3>
-                        <a style={linkStyle} href="https://www.youtube.com/watch?v=-3aVf_LilUc" target="_blank"><img class="logoLink" src={youTubeLogo}></img></a>
-                        <a style={linkStyle} href="https://www.reddit.com/r/RocketLeague/" target="_blank"><img class="logoLink" src={redditLogo}></img></a>
+                        <a style={linkStyle} href="https://www.youtube.com/watch?v=-3aVf_LilUc" target="_blank"><img className="logoLink" src={youTubeLogo}></img></a>
+                        <a style={linkStyle} href="https://www.reddit.com/r/RocketLeague/" target="_blank"><img className="logoLink" src={redditLogo}></img></a>
                         </h3>
                     <h3>
-                        <a style={linkStyle} href="https://github.com/JakeCapra/rlbingo" target="_blank"><img class="logoLink" src={GitHubLogo}></img></a>
-                        <a style={linkStyle} href="https://steamcommunity.com/id/hip_dips/" target="_blank"><img class="logoLink" src={SteamLogo}></img></a>
+                        <a style={linkStyle} href="https://github.com/JakeCapra/rlbingo" target="_blank"><img className="logoLink" src={GitHubLogo}></img></a>
+                        <a style={linkStyle} href="https://steamcommunity.com/id/hip_dips/" target="_blank"><img className="logoLink" src={SteamLogo}></img></a>
                     </h3>
                     <div>
                         <form onSubmit={this.noReload}>
-                        <input type="text" placeholder="Enter a bingo tile" />
+                        <input id="inputBox" type="text" placeholder="Enter a bingo tile" />
                         </form>
                         <button onClick={this.onSubmit}>Enter</button>
                         {resetBtn}
+                        {added}
                     </div>
                 </div>
                 <div style={rightDiv}>
