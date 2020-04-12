@@ -168,7 +168,7 @@ class Table extends React.Component {
                 var id = i.toString() + j.toString();
                 var tmp = document.getElementById(id);
                 console.log("ID = " + id);
-                tmp.style.background = "red";
+                tmp.style.backgroundColor = "red";
             }
         }
         this.forceUpdate();
