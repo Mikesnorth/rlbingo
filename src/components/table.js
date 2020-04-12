@@ -248,7 +248,9 @@ class Table extends React.Component {
                 added.push(<label className="customInput" htmlFor={i}>{this.state.addedTiles[i].title}
                             <input type="checkbox" id={i} onClick={this.handleCheckboxClick} />
                             <span class="checkmark"></span>
-                            </label>);
+                            <hr />
+                            </label>
+                            );
             }
         }
 
@@ -272,7 +274,7 @@ class Table extends React.Component {
                         </form>
                         <button onClick={this.onSubmit}>Enter</button>
                         {resetBtn}
-                        <div>{added}</div>
+                        <div id="customInputDiv">{added}</div>
                     </div>
                 </div>
                 <div style={rightDiv}>
@@ -286,7 +288,6 @@ class Table extends React.Component {
 const sleep = (milliseconds) => {
         return new Promise(resolve => setTimeout(resolve, milliseconds))
       }
-
 
 const tableStyle = {
     tableLayout: "fixed",

@@ -71,9 +71,36 @@ th:hover {
   transform: scale(1.07);
   color: white;
 }
-/*--------------------------------------------*/
-/*Checkboxes*/
-/*--------------------------------------------*/
+
+#customInputDiv {
+  height: 10vw;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+/*Input Field */
+#inputBox {
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  background-color: purple;
+  color: white;
+  border: 5px solid black;
+  border-radius: 10px;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #cccccc;
+}
+
+
+
+
+
+/*--------------------------------------------
+Checkboxes
+--------------------------------------------*/
 
 .customInput {
   display: block;
@@ -105,6 +132,7 @@ th:hover {
   width: 25px;
   background-color: #eee;
   opacity: .8;
+  border-radius: 8px;
 }
 
 /* On mouse-over, add a grey background color */
