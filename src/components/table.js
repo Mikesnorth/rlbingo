@@ -75,7 +75,6 @@ class Table extends React.Component {
         if (e.target.style.backgroundColor === "red") {
             e.target.style.backgroundColor = "green";
             this.state.rows[i][j].marked = true;
-            console.log("here");
         }
         else {
             e.target.style.backgroundColor = "red";
