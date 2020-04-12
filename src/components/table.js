@@ -34,28 +34,44 @@ class Table extends React.Component {
                         ];
 
         var usedIndex = [];
+        let tileArr =[];
 
-        for (var i = 0; i < 5; i++) {
+        for (var i=0; i<this.state.addedTiles.length; i++) {
+            console.log(this.state.addedTiles[i].use + " " + this.state.addedTiles[i].title);
+            if (this.state.addedTiles[i].use) {
+                tileArr.push(this.state.addedTiles[i].title);
+            }
+        }
+
+        //25 - length does not work in the for loop (for some reason) - javascript bad
+        var insertAmt = 24 - tileArr.length;
+        for (i=0; i<insertAmt; i++) {
+            tileArr.push(tileText[Math.floor(Math.random() * tileText.length)]);
+        }
+
+        for (i = 0; i < 5; i++) {
             for (var j = 0; j < 5; j++) {
-                do
-                {
-                    var index = Math.floor(Math.random() * tileText.length);
+                if (i === 2 && j === 2) {
+                    this.state.rows[i][j].title = "Free";
+                }
+                else {
+                    do
+                    {
+                        var index = Math.floor(Math.random() * tileArr.length);
 
-                } while (usedIndex.includes(index));
-                usedIndex.push(index);
-                this.state.rows[i][j].title = tileText[index];
-                this.state.rows[i][j].marked = false;
+                    } while (usedIndex.includes(index));
+                    usedIndex.push(index);
+                    this.state.rows[i][j].title = tileArr[index];
+                    this.state.rows[i][j].marked = false;
+                }   
                 this.forceUpdate();
             }
         }
-        this.state.rows[2][2].title = "Free";
         this.disp = true;
         this.forceUpdate();
     }
 
     handleClick = (i, j, e) => {
-
-        
         if (e.target.style.background === "red") {
             e.target.style.background = "green";
             this.state.rows[i][j].marked = true;
@@ -68,7 +84,6 @@ class Table extends React.Component {
     }
 
     async checkWin() {
-        
         var pass=false;
         let temp = this.state.rows;
         let slpAmt = this.state.sleepAmt;
@@ -151,6 +166,7 @@ class Table extends React.Component {
                 this.state.rows[i][j].marked = false;
                 var id = i.toString() + j.toString();
                 var tmp = document.getElementById(id);
+                console.log("ID = " + id);
                 tmp.style.background = "red";
             }
         }
@@ -160,18 +176,28 @@ class Table extends React.Component {
     onSubmit = (e) => {
         e.preventDefault();
         var input = document.getElementById("inputBox").value;
-        this.state.addedTiles.push(input);
+        this.state.addedTiles.push({title: input, use: false});
         this.useAdded = true;
         this.forceUpdate();
     }
     noReload = (e) => {
         e.preventDefault();
     }
+    handleCheckboxClick = (e) => {
+        console.log(e.target.id);
+        if (e.target.checked) {
+            this.state.addedTiles[e.target.id].use = true;
+        }
+        else {
+            this.state.addedTiles[e.target.id].use = false;
+        }
+        this.forceUpdate();
+    }
 
     render () {
-        let content, added;
+        let content;
+        var added = [];
         let resetBtn;
-        //let userVars = this.addedTiles;
         const display = this.disp;
         const dispAdded = this.useAdded;
         if (display) {
@@ -218,13 +244,12 @@ class Table extends React.Component {
                 resetBtn = <button onClick={this.reset}>Reset</button>;
         }
         if (dispAdded) {
-            let holder;
             for (var i=0; i<this.state.addedTiles.length; i++) {
-                console.log(this.state.addedTiles[i]);
-                var x = this.state.addedTiles[i]
-                holder += (<p>{x}</p>);
+                added.push(<label className="customInput" htmlFor={i}>{this.state.addedTiles[i].title}
+                            <input type="checkbox" id={i} onClick={this.handleCheckboxClick} />
+                            <span class="checkmark"></span>
+                            </label>);
             }
-            added = holder;
         }
 
         return (
@@ -247,7 +272,7 @@ class Table extends React.Component {
                         </form>
                         <button onClick={this.onSubmit}>Enter</button>
                         {resetBtn}
-                        {added}
+                        <div>{added}</div>
                     </div>
                 </div>
                 <div style={rightDiv}>
