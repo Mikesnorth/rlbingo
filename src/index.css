@@ -63,7 +63,7 @@ th {
     padding: 3.2vw; 
     opacity: 0.75;
     border: 1px solid white;
-    background: red;
+    background-color: red;
     user-select: none;
     cursor: "grab";
 }
