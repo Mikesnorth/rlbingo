@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/rlbingo/static/css/main.8c9f9f46.chunk.css",
-    "main.js": "/rlbingo/static/js/main.6eba7c8e.chunk.js",
-    "main.js.map": "/rlbingo/static/js/main.6eba7c8e.chunk.js.map",
+    "main.css": "/rlbingo/static/css/main.247870b1.chunk.css",
+    "main.js": "/rlbingo/static/js/main.ba1ab262.chunk.js",
+    "main.js.map": "/rlbingo/static/js/main.ba1ab262.chunk.js.map",
     "runtime-main.js": "/rlbingo/static/js/runtime-main.19a45e87.js",
     "runtime-main.js.map": "/rlbingo/static/js/runtime-main.19a45e87.js.map",
     "static/js/2.16ba9aec.chunk.js": "/rlbingo/static/js/2.16ba9aec.chunk.js",
     "static/js/2.16ba9aec.chunk.js.map": "/rlbingo/static/js/2.16ba9aec.chunk.js.map",
     "index.html": "/rlbingo/index.html",
-    "precache-manifest.c3480894cc9f876dc81c538072cf3f5b.js": "/rlbingo/precache-manifest.c3480894cc9f876dc81c538072cf3f5b.js",
+    "precache-manifest.2738a51f079a91a1912ce2dd91a50e83.js": "/rlbingo/precache-manifest.2738a51f079a91a1912ce2dd91a50e83.js",
     "service-worker.js": "/rlbingo/service-worker.js",
-    "static/css/main.8c9f9f46.chunk.css.map": "/rlbingo/static/css/main.8c9f9f46.chunk.css.map",
+    "static/css/main.247870b1.chunk.css.map": "/rlbingo/static/css/main.247870b1.chunk.css.map",
     "static/js/2.16ba9aec.chunk.js.LICENSE.txt": "/rlbingo/static/js/2.16ba9aec.chunk.js.LICENSE.txt",
     "static/media/bg.png": "/rlbingo/static/media/bg.d7df5243.png",
     "static/media/dropshotbg.mp4": "/rlbingo/static/media/dropshotbg.019e214b.mp4",
@@ -22,7 +22,7 @@
   "entrypoints": [
     "static/js/runtime-main.19a45e87.js",
     "static/js/2.16ba9aec.chunk.js",
-    "static/css/main.8c9f9f46.chunk.css",
-    "static/js/main.6eba7c8e.chunk.js"
+    "static/css/main.247870b1.chunk.css",
+    "static/js/main.ba1ab262.chunk.js"
   ]
 }
