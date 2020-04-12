@@ -5,7 +5,7 @@ This is Rocket League Bingo. I created this after I watched <a href=https://www.
 # View the Site
 You can view and use the site [here](https://jakecapra.github.io/rlbingo/)
 
-## Installation
+## Installation - (If you want to make some changes)
 
 ### Clone the Repo
 <img src="./readmePictures/img1.png" alt="GitHub Clone">
@@ -39,8 +39,3 @@ Download Node.js at this <a href="https://nodejs.org/en/">link</a>.
 This should open a browser to localhost:3000.
 
 If you close this tab you can just type localhost:3000 into the browser
-
-
-## Notes
-The background color if the tiles does not change when you create a new board, so you need to refresfh the page and generate a new board if you want to start over. Or you can toggle the color on each tile by clicking on it.
-I don't ahve a lot of experince with react and web dev. in general, so it is not the best site, but I hope you enjoy it. 
