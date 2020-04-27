@@ -34,7 +34,8 @@ class Table extends React.Component {
                         ];
 
         var usedIndex = [];
-        let tileArr =[];
+        var usedIndexLoad = [];
+        let tileArr =[]; // tiles to added to board
 
         for (var i=0; i<this.state.addedTiles.length; i++) {
             console.log(this.state.addedTiles[i].use + " " + this.state.addedTiles[i].title);
@@ -46,7 +47,14 @@ class Table extends React.Component {
         //25 - length does not work in the for loop (for some reason) - javascript bad
         var insertAmt = 24 - tileArr.length;
         for (i=0; i<insertAmt; i++) {
-            tileArr.push(tileText[Math.floor(Math.random() * tileText.length)]);
+            do
+                    {
+                        var index = Math.floor(Math.random() * tileText.length);
+
+                    } while (usedIndexLoad.includes(index));
+                    usedIndexLoad.push(index);
+                    tileArr.push(tileText[index]);
+                    console.log(index)
         }
 
         for (i = 0; i < 5; i++) {
