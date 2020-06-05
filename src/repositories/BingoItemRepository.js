@@ -40,9 +40,5 @@ export function GetBingoTileItems(maxLevel) {
     for(var i = 0; i <= maxLevel; i++) {
         items = items.concat(itemsCollection[i]);
     }
-    var iGotNothing = items.includes("");
-    if(iGotNothing) {
-        console.log('yea dude, i got nothing here');
-    }
     return items;
 }
