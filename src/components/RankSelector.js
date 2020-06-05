@@ -20,7 +20,7 @@ class RankSelector extends React.Component {
                 <option value="2">Silver</option>
                 <option value="3">Gold</option>
                 <option value="4">Platinum</option>
-                <option value="5">Diamon</option>
+                <option value="5">Diamond</option>
                 <option value="6">Champ</option>
                 <option value="7">Grand Champ</option>
                 <option value="8">Celebrity</option>
